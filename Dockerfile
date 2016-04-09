@@ -52,3 +52,4 @@ RUN set -ex \
 
 EXPOSE 4180
 ENTRYPOINT [ "/usr/local/bin/oauth2_proxy" ]
+CMD [ "-help" ]
