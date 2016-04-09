@@ -37,7 +37,7 @@ RUN set -ex \
     && cd /usr/local/go/src \
     && ./make.bash \
     \
-    && rm -rf /usr/local/bootstrap /usr/local/go/pkg/bootstrap /*.patch \
+    && rm -rf /usr/local/bootstrap /usr/local/go/pkg/bootstrap \
     \
     && mkdir -p /usr/src/oauth2_proxy \
     && mkdir -p /go \
