@@ -1,13 +1,13 @@
 FROM alpine:3.3
 
 ENV OAUTH2_PROXY_REPO bitly/oauth2_proxy
-ENV OAUTH2_PROXY_COMMIT 42f1651ba5ab411e3216bd46f3c90bab153a2f13
+ENV OAUTH2_PROXY_COMMIT 7b26256df62d0d00993433105794d2f23d8c27e4
 
 RUN set -ex \
     \
-    && export GOLANG_VERSION=1.6 \
+    && export GOLANG_VERSION=1.9 \
     && export GOLANG_SRC_URL=https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz \
-    && export GOLANG_SRC_SHA256=a96cce8ce43a9bf9b2a4c7d470bc7ee0cb00410da815980681c8353218dcf146 \
+    && export GOLANG_SRC_SHA256=a4ab229028ed167ba1986825751463605264e44868362ca8e7accc8be057e993 \
     \
     && export GOLANG_BOOTSTRAP_VERSION=1.4.3 \
     && export GOLANG_BOOTSTRAP_URL=https://golang.org/dl/go$GOLANG_BOOTSTRAP_VERSION.src.tar.gz \
