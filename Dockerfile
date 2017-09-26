@@ -21,6 +21,7 @@ RUN set -ex \
         openssl \
         tar \
         git \
+        patch \
     && mkdir -p /usr/local/bootstrap \
     && wget -q "$GOLANG_BOOTSTRAP_URL" -O golang.tar.gz \
     && echo "$GOLANG_BOOTSTRAP_SHA1  golang.tar.gz" | sha1sum -c - \
@@ -45,6 +46,7 @@ RUN set -ex \
     && cd /usr/src/oauth2_proxy \
     && wget "https://github.com/${OAUTH2_PROXY_REPO}/archive/${OAUTH2_PROXY_COMMIT}.tar.gz" -O oauth2_proxy.tar.gz \
     && tar -C /usr/src/oauth2_proxy -xzf oauth2_proxy.tar.gz --strip-components=1 \
+    && pushd /usr/src/oauth2_proxy && patch -p1 < $(curl https://github.com/postmates/oauth2_proxy/commit/5a27234e167a81f4bccd668a7171b797289d3db0.patch) && popd && \
     && go get -v -d \
     && go install -v \
     && rm -rf /go /usr/src/oauth2_proxy /usr/local/go \
