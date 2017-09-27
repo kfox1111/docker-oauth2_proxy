@@ -49,7 +49,7 @@ RUN set -ex \
     && go get -v -d \
     && wget -O foo.patch https://github.com/postmates/oauth2_proxy/commit/5a27234e167a81f4bccd668a7171b797289d3db0.patch \
     && patch -p1 < foo.patch \
-    && cd github.com/bitly/oauth2_proxy/ \
+    && cd /go/github.com/bitly/oauth2_proxy/ \
     && patch -p1 < /usr/src/oauth2_proxy/foo.patch \
     && cd - \
     && rm -f foo.patch \
