@@ -49,11 +49,14 @@ RUN set -ex \
     && go get -v -d \
     && wget -O foo.patch https://github.com/postmates/oauth2_proxy/commit/5a27234e167a81f4bccd668a7171b797289d3db0.patch \
     && wget -O foo2.patch https://github.com/kfox1111/oauth2_proxy/commit/5b8eaaf97c695c0df7df478da8bc9d9ce98061d7.patch \
+    && wget -O foo3.patch https://github.com/kfox1111/oauth2_proxy/commit/56a73266dabe58531423de8fc91288f95636924f.patch \
     && patch -p1 < foo.patch \
     && patch -p1 < foo2.patch \
+    && patch -p1 < foo3.patch \
     && cd /go/src/github.com/bitly/oauth2_proxy/ \
     && patch -p1 < /usr/src/oauth2_proxy/foo.patch \
     && patch -p1 < /usr/src/oauth2_proxy/foo2.patch \
+    && patch -p1 < /usr/src/oauth2_proxy/foo3.patch \
     && cd - \
     && rm -f foo.patch \
     && rm -f foo2.patch \
