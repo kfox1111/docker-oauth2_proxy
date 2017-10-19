@@ -48,11 +48,15 @@ RUN set -ex \
     && tar -C /usr/src/oauth2_proxy -xzf oauth2_proxy.tar.gz --strip-components=1 \
     && go get -v -d \
     && wget -O foo.patch https://github.com/postmates/oauth2_proxy/commit/5a27234e167a81f4bccd668a7171b797289d3db0.patch \
+    && wget -O foo2.patch https://github.com/kfox1111/oauth2_proxy/commit/5b8eaaf97c695c0df7df478da8bc9d9ce98061d7.patch \
     && patch -p1 < foo.patch \
+    && patch -p1 < foo2.patch \
     && cd /go/src/github.com/bitly/oauth2_proxy/ \
     && patch -p1 < /usr/src/oauth2_proxy/foo.patch \
+    && patch -p1 < /usr/src/oauth2_proxy/foo2.patch \
     && cd - \
     && rm -f foo.patch \
+    && rm -f foo2.patch \
     && go install -v \
     && rm -rf /go /usr/src/oauth2_proxy /usr/local/go \
     && apk del .build-deps
